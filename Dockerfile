@@ -16,10 +16,11 @@ RUN bash /tmp/get.sh
 # Build the command inside the container.
 # (You may fetch or manage dependencies here,
 # either manually or with a
-RUN go build -o /go/src/app/build/api /go/src/app/*
+RUN go build -o /go/src/app/api /go/src/app/*
 
 # Run the api command by default when the container starts.
-CMD ["/go/src/app/build/api"]
+#CMD ["/go/src/app/api"]
+ENTRYPOINT /go/src/app/api
 
 # Document that the service listens on port 8080.
 EXPOSE 8080
