@@ -19,8 +19,10 @@ RUN bash /tmp/get.sh
 RUN go build -o /go/src/app/api /go/src/app/*
 
 # Run the api command by default when the container starts.
-#CMD ["/go/src/app/api"]
 ENTRYPOINT /go/src/app/api
 
 # Document that the service listens on port 8080.
 EXPOSE 8080
+
+# Turn your head and cough
+HEALTHCHECK CMD curl --fail http://localhost:8080/healthcheck || exit 1
