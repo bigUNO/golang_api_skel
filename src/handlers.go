@@ -11,8 +11,14 @@ import (
 	"github.com/gorilla/mux"
 )
 
+func HealthCheck(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.WriteHeader(http.StatusOK)
+	io.WriteString(w, `{"alive": true}`)
+}
+
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Welcome!\n")
+	fmt.Fprintln(w, "Welcome!")
 }
 
 func ItemIndex(w http.ResponseWriter, r *http.Request) {
