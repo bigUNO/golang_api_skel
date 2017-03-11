@@ -1,6 +1,8 @@
 # golang_api_skel
 Basic framework for Go API
 
+[![Build Status](https://travis-ci.org/bigUNO/golang_api_skel.svg?branch=master)](https://travis-ci.org/bigUNO/golang_api_skel)
+
 Mostly stolen code, pulling together for self-learning.
 
 ## Build
