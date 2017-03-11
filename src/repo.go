@@ -7,6 +7,7 @@ import (
 var currentId int
 
 var items Items
+var testItems neoItems
 
 func init() {
 	// creating test items
@@ -33,6 +34,12 @@ func RepoCreateItem(I Item) Item {
 	I.Id = currentId
 	items = append(items, I)
 	return I
+}
+
+// Replacement item creater
+func CreateTestItem(nI neoItem) neoItem {
+  testItems = append(testItems, nI)
+  return nI
 }
 
 func RepoDestroyItem(id int) error {
