@@ -1,6 +1,8 @@
 package main
 
 import (
+	"time"
+
 	"github.com/rs/xid"
 )
 
@@ -33,8 +35,12 @@ func (nI neoItem) getXid() xid.ID {
 	return nI.Id
 }
 
-/*
-func (xid string) getItemCounter(xid string) int32 {
-	return guid.Counter(xid)
+func (nI neoItem) getXidString() string {
+	s := nI.Id
+	return s.String()
 }
-*/
+
+func (nI neoItem) getXidTimestamp() time.Time {
+	t := nI.Id
+	return t.Time()
+}
