@@ -38,8 +38,8 @@ func RepoCreateItem(I Item) Item {
 
 // Replacement item creater
 func CreateTestItem(nI neoItem) neoItem {
-  testItems = append(testItems, nI)
-  return nI
+	testItems = append(testItems, nI)
+	return nI
 }
 
 func RepoDestroyItem(id int) error {

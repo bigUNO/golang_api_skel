@@ -2,15 +2,17 @@ package main
 
 import (
 	"testing"
-  "unicode/utf8"
+	"unicode/utf8"
 )
 
-func TestGetXidReturnsCorrectLength(t *testing.T) {
-  expected := 20
-  actual := utf8.RuneCountInString(getXid())
+func TestCreateXidReturnsCorrectLength(t *testing.T) {
+	expected := 20
+	testID := createXid()
 
-  if actual != expected {
-    t.Errorf("got a sring of the wrong length: got %v want %v",
-      actual, expected)
-  }
+	actual := utf8.RuneCountInString(testID.String())
+
+	if actual != expected {
+		t.Errorf("got a sring of the wrong length: got %v want %v",
+			actual, expected)
+	}
 }
