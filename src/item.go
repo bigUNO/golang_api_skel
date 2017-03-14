@@ -23,24 +23,21 @@ func (self *neoItem) SetDefaults() {
 	self.Id = createXid()
 }
 
-// NewSomething create new instance of Something
+// NewNeoItem: NewSomething create new instance of Something
 func NewNeoItem(name string) neoItem {
 	newNeoItem := neoItem{}
 	newNeoItem.Id = createXid()
 	return newNeoItem
 }
 
-// Name receives a copy of Foo since it doesn't need to modify it.
-func (nI neoItem) getXid() xid.ID {
-	return nI.Id
-}
-
-func (nI neoItem) getXidString() string {
+// getXidString: return neoItems UUID string
+func getXidString(nI neoItem) string {
 	s := nI.Id
 	return s.String()
 }
 
-func (nI neoItem) getXidTimestamp() time.Time {
+// getXidTimestamp: Returns timestamp of xid
+func getXidTimestamp(nI neoItem) time.Time {
 	t := nI.Id
 	return t.Time()
 }
