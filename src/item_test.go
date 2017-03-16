@@ -47,6 +47,20 @@ func TestGetXidString(t *testing.T) {
 	}
 }
 
+// Test getting name from Item
+func TestGetXidName(t *testing.T) {
+	id := xid.ID{0x4d, 0x88, 0xe1, 0x5b, 0x60, 0xf4, 0x86, 0xe4, 0x28, 0x41, 0x2d, 0xc9}
+	testItem := neoItem{Id: id, Name: "beansprouts"}
+
+	actual := getXidName(testItem)
+	expected := "beansprouts"
+	if actual != expected {
+		t.Errorf("got the wrong type: got %v wanted %v",
+			actual, expected)
+	}
+}
+
+// Test getting timestamp from Item
 func TestGetXidTimestamp(t *testing.T) {
 	id := xid.ID{0x4d, 0x88, 0xe1, 0x5b, 0x60, 0xf4, 0x86, 0xe4, 0x28, 0x41, 0x2d, 0xc9}
 	testItem := neoItem{Id: id, Name: "beansprouts"}
@@ -56,7 +70,21 @@ func TestGetXidTimestamp(t *testing.T) {
 	actual := getXidTimestamp(testItem)
 	expected := actual.Sub(currentTime)
 	if expected > 1 {
-		t.Errorf("fucked up: got %v wanted %v",
+		t.Errorf("got an unexpected timestamp: got %v wanted %v",
+			actual, expected)
+	}
+}
+
+// Test getting counter from Item
+func TestGetXidCounter(t *testing.T) {
+	var expected int32
+	id := xid.ID{0x4d, 0x88, 0xe1, 0x5b, 0x60, 0xf4, 0x86, 0xe4, 0x28, 0x41, 0x2d, 0xc9}
+	testItem := neoItem{Id: id, Name: "beansprouts"}
+
+	expected = 4271561
+	actual := getXidCounter(testItem)
+	if actual != expected {
+		t.Errorf("got an unexpected counter: got %v wanted %v",
 			actual, expected)
 	}
 }

@@ -6,7 +6,6 @@ Basic framework for Go API
  * [Docker](##docker)
 * [Testing](#testing)
 * [Usage](#usage)
-Mostly stolen code, pulling together for self-learning.
 
 # Build
 Creates an executable called api in the `build` directory.
@@ -55,5 +54,5 @@ curl http://localhost:8080/items/2
 
 Add item
 ```sh
-curl -H "Content-Type: application/json" -d '{"name":"New Item"}' http://localhost:8080/items
+curl -H "Content-Type: application/json" -d '{"name":"soda"}' http://localhost:8080/items
 ```

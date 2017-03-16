@@ -7,16 +7,37 @@ import (
 var currentId int
 
 var items Items
-var testItems neoItems
+var neoitems neoItems
 
 func init() {
 	// creating test items
-	RepoCreateItem(Item{Name: "candlestick"})
-	RepoCreateItem(Item{Name: "rope"})
-	RepoCreateItem(Item{Name: "lead pipe"})
-	RepoCreateItem(Item{Name: "revolver"})
-	RepoCreateItem(Item{Name: "wrench"})
+	createItem("candlestick")
+	createItem("rope")
+	createItem("lead pipe")
+	createItem("revolver")
+	createItem("wrench")
+	createItem("horseshoe")
+}
 
+// createItem: NewSomething create new instance of item
+func createItem(name string) neoItem {
+	newNeoItem := neoItem{}
+	newNeoItem.Id = createXid()
+	newNeoItem.Name = name
+	neoitems = append(neoitems, newNeoItem)
+	return newNeoItem
+}
+
+// findItem: lookup item by id (string)
+func findItem(id string) neoItem {
+	for _, nI := range neoitems {
+	  found := getXidString(nI)
+		if id == found {
+			return nI
+		}
+	}
+	// return empty item if not found
+	return neoItem{}
 }
 
 func RepoFindItem(id int) Item {
@@ -34,12 +55,6 @@ func RepoCreateItem(I Item) Item {
 	I.Id = currentId
 	items = append(items, I)
 	return I
-}
-
-// Replacement item creater
-func CreateTestItem(nI neoItem) neoItem {
-	testItems = append(testItems, nI)
-	return nI
 }
 
 func RepoDestroyItem(id int) error {

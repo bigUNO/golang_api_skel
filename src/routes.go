@@ -12,18 +12,11 @@ type Route struct {
 type Routes []Route
 
 var routes = Routes{
-	Route{
-		"HealthCheck",
-		"GET",
-		"/healthcheck",
-		HealthCheck,
-	},
-	Route{
-		"Index",
-		"GET",
-		"/",
-		Index,
-	},
+	Route{"Index", "GET", "/", index},
+	Route{"HealthCheck", "GET", "/healthcheck", healthCheck},
+	Route{"NeoItemIndex", "GET", "/neoitems", itemIndex},
+	Route{"NeoItemCreate", "POST", "/neoitems", itemCreate},
+	Route{"NeoItemShow", "GET", "/neoitems/{NeoItemId}", itemShow},
 	Route{
 		"ItemIndex",
 		"GET",
