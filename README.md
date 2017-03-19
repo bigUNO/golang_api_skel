@@ -49,8 +49,11 @@ curl http://localhost:8080/items
 
 Return single item
 ```sh
-curl http://localhost:8080/items/2
+curl http://localhost:8080/items/b379fdbaqj868olu1gi0
 ```
+
+Note the example above will not work, you need to grab the UUID of one of the
+test items.
 
 Add item
 ```sh
