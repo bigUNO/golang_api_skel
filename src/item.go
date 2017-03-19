@@ -10,6 +10,7 @@ type Item struct {
 	Id       xid.ID    `json:"xid"`
 	Name     string    `json:"name"`
 	Modified time.Time `json:"modified"`
+	IsDeleted bool		 `json:"isdeleted"`
 }
 
 type Items []Item
@@ -17,6 +18,12 @@ type Items []Item
 // SetModified: Sets last modified date
 func (self *Item) SetModified() {
 	self.Modified = time.Now()
+	return
+}
+
+// SetDeleted: Marks the record as deleted
+func (self *Item) SetDeleted() {
+	self.IsDeleted = true
 	return
 }
 
@@ -48,4 +55,9 @@ func getXidCounter(I Item) int32 {
 // getItemModified: Returns modified time
 func getItemModified(I Item) time.Time {
 	return I.Modified
+}
+
+// getIsDeleted: Returns is item is deleted or not
+func getIsDeleted(I Item) bool {
+	return I.IsDeleted
 }
