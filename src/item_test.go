@@ -20,6 +20,21 @@ func TestXid(t *testing.T) {
 	}
 }
 
+// Test setting the last modified time
+func TestSetModified(t *testing.T) {
+	id := xid.ID{0x4d, 0x88, 0xe1, 0x5b, 0x60, 0xf4, 0x86, 0xe4, 0x28, 0x41, 0x2d, 0xc9}
+	exampleTime := time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
+	testItem := Item{Id: id, Name: "beansprouts", Modified: exampleTime}
+
+  testItem.SetModified()
+	actual := getItemModified(testItem)
+	expected := "placeholder"
+	if actual == exampleTime {
+		t.Errorf("got an unexpected modified time: got %v wanted %v",
+			actual, expected)
+	}
+}
+
 // Test creating a new UUID
 func TestCreateXid(t *testing.T) {
 	expected := 20
@@ -66,7 +81,6 @@ func TestGetXidTimestamp(t *testing.T) {
 	testItem := Item{Id: id, Name: "beansprouts"}
 	currentTime := time.Now()
 
-	//expected := 30
 	actual := getXidTimestamp(testItem)
 	expected := actual.Sub(currentTime)
 	if expected > 1 {
@@ -85,6 +99,21 @@ func TestGetXidCounter(t *testing.T) {
 	actual := getXidCounter(testItem)
 	if actual != expected {
 		t.Errorf("got an unexpected counter: got %v wanted %v",
+			actual, expected)
+	}
+}
+
+// Test getting modified time
+func TestGetModified(t *testing.T) {
+	id := xid.ID{0x4d, 0x88, 0xe1, 0x5b, 0x60, 0xf4, 0x86, 0xe4, 0x28, 0x41, 0x2d, 0xc9}
+	exampleTime := time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
+	testItem := Item{Id: id, Name: "beansprouts", Modified: exampleTime}
+
+  testItem.SetModified()
+	actual := getItemModified(testItem)
+	expected := actual.Sub(time.Now())
+	if expected > 1 {
+		t.Errorf("got an unexpected modified time: got %v wanted %v",
 			actual, expected)
 	}
 }

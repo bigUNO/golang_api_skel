@@ -1,7 +1,7 @@
 package main
 
 import (
-	//"fmt"
+//"fmt"
 )
 
 var items Items
@@ -28,7 +28,7 @@ func createItem(name string) Item {
 // findItem: lookup item by id (string)
 func findItem(id string) Item {
 	for _, I := range items {
-	  found := getXidString(I)
+		found := getXidString(I)
 		if id == found {
 			return I
 		}
