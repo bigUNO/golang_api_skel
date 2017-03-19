@@ -12,34 +12,9 @@ type Route struct {
 type Routes []Route
 
 var routes = Routes{
-	Route{
-		"HealthCheck",
-		"GET",
-		"/healthcheck",
-		HealthCheck,
-	},
-	Route{
-		"Index",
-		"GET",
-		"/",
-		Index,
-	},
-	Route{
-		"ItemIndex",
-		"GET",
-		"/items",
-		ItemIndex,
-	},
-	Route{
-		"ItemCreate",
-		"POST",
-		"/items",
-		ItemCreate,
-	},
-	Route{
-		"ItemShow",
-		"GET",
-		"/items/{itemId}",
-		ItemShow,
-	},
+	Route{"Index", "GET", "/", index},
+	Route{"HealthCheck", "GET", "/healthcheck", healthCheck},
+	Route{"ItemIndex", "GET", "/items", itemIndex},
+	Route{"ItemCreate", "POST", "/items", itemCreate},
+	Route{"ItemShow", "GET", "/items/{ItemId}", itemShow},
 }

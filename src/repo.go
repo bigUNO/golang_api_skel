@@ -1,26 +1,35 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 )
-
-var currentId int
 
 var items Items
 
 func init() {
 	// creating test items
-	RepoCreateItem(Item{Name: "candlestick"})
-	RepoCreateItem(Item{Name: "rope"})
-	RepoCreateItem(Item{Name: "lead pipe"})
-	RepoCreateItem(Item{Name: "revolver"})
-	RepoCreateItem(Item{Name: "wrench"})
-
+	createItem("candlestick")
+	createItem("rope")
+	createItem("lead pipe")
+	createItem("revolver")
+	createItem("wrench")
+	createItem("horseshoe")
 }
 
-func RepoFindItem(id int) Item {
+// createItem: NewSomething create new instance of item
+func createItem(name string) Item {
+	newItem := Item{}
+	newItem.Id = createXid()
+	newItem.Name = name
+	items = append(items, newItem)
+	return newItem
+}
+
+// findItem: lookup item by id (string)
+func findItem(id string) Item {
 	for _, I := range items {
-		if I.Id == id {
+	  found := getXidString(I)
+		if id == found {
 			return I
 		}
 	}
@@ -28,13 +37,7 @@ func RepoFindItem(id int) Item {
 	return Item{}
 }
 
-func RepoCreateItem(I Item) Item {
-	currentId += 1
-	I.Id = currentId
-	items = append(items, I)
-	return I
-}
-
+/*
 func RepoDestroyItem(id int) error {
 	for i, I := range items {
 		if I.Id == id {
@@ -43,4 +46,4 @@ func RepoDestroyItem(id int) error {
 		}
 	}
 	return fmt.Errorf("Could not find item with id of %d to delete", id)
-}
+}*/
