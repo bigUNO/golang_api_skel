@@ -14,7 +14,7 @@ type Routes []Route
 var routes = Routes{
 	Route{"Index", "GET", "/", index},
 	Route{"HealthCheck", "GET", "/healthcheck", healthCheck},
-	Route{"NeoItemIndex", "GET", "/neoitems", itemIndex},
-	Route{"NeoItemCreate", "POST", "/neoitems", itemCreate},
-	Route{"NeoItemShow", "GET", "/neoitems/{NeoItemId}", itemShow},
+	Route{"ItemIndex", "GET", "/items", itemIndex},
+	Route{"ItemCreate", "POST", "/items", itemCreate},
+	Route{"ItemShow", "GET", "/items/{ItemId}", itemShow},
 }

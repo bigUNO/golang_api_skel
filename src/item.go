@@ -6,39 +6,39 @@ import (
 	"github.com/rs/xid"
 )
 
-type neoItem struct {
+type Item struct {
 	Id   xid.ID `json:"xid"`
 	Name string `json:"name"`
 }
 
-type neoItems []neoItem
+type Items []Item
 
 // SetDefaults: sets the UUID on creation
-func (self *neoItem) SetDefaults() {
+func (self *Item) SetDefaults() {
 	self.Id = createXid()
 }
 
 // METHODS
 
-// getXidString: return neoItems UUID string
-func getXidString(nI neoItem) string {
-	s := nI.Id
+// getXidString: return Items UUID string
+func getXidString(I Item) string {
+	s := I.Id
 	return s.String()
 }
 
-// getXidName: return neoItems Name string
-func getXidName(nI neoItem) string {
-	return nI.Name
+// getXidName: return Items Name string
+func getXidName(I Item) string {
+	return I.Name
 }
 
 // getXidTimestamp: Returns timestamp of xid
-func getXidTimestamp(nI neoItem) time.Time {
-	t := nI.Id
+func getXidTimestamp(I Item) time.Time {
+	t := I.Id
 	return t.Time()
 }
 
 // getXidCounter: Returns counter of xid
-func getXidCounter(nI neoItem) int32 {
-	c := nI.Id
+func getXidCounter(I Item) int32 {
+	c := I.Id
 	return c.Counter()
 }

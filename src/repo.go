@@ -4,7 +4,7 @@ import (
 	//"fmt"
 )
 
-var neoitems neoItems
+var items Items
 
 func init() {
 	// creating test items
@@ -17,24 +17,24 @@ func init() {
 }
 
 // createItem: NewSomething create new instance of item
-func createItem(name string) neoItem {
-	newNeoItem := neoItem{}
-	newNeoItem.Id = createXid()
-	newNeoItem.Name = name
-	neoitems = append(neoitems, newNeoItem)
-	return newNeoItem
+func createItem(name string) Item {
+	newItem := Item{}
+	newItem.Id = createXid()
+	newItem.Name = name
+	items = append(items, newItem)
+	return newItem
 }
 
 // findItem: lookup item by id (string)
-func findItem(id string) neoItem {
-	for _, nI := range neoitems {
-	  found := getXidString(nI)
+func findItem(id string) Item {
+	for _, I := range items {
+	  found := getXidString(I)
 		if id == found {
-			return nI
+			return I
 		}
 	}
 	// return empty item if not found
-	return neoItem{}
+	return Item{}
 }
 
 /*

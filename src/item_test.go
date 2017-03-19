@@ -35,7 +35,7 @@ func TestCreateXid(t *testing.T) {
 // Test ability to get string version of UUID
 func TestGetXidString(t *testing.T) {
 	id := xid.ID{0x4d, 0x88, 0xe1, 0x5b, 0x60, 0xf4, 0x86, 0xe4, 0x28, 0x41, 0x2d, 0xc9}
-	testItem := neoItem{Id: id, Name: "beansprouts"}
+	testItem := Item{Id: id, Name: "beansprouts"}
 
 	expected := "string"
 	s := getXidString(testItem)
@@ -50,7 +50,7 @@ func TestGetXidString(t *testing.T) {
 // Test getting name from Item
 func TestGetXidName(t *testing.T) {
 	id := xid.ID{0x4d, 0x88, 0xe1, 0x5b, 0x60, 0xf4, 0x86, 0xe4, 0x28, 0x41, 0x2d, 0xc9}
-	testItem := neoItem{Id: id, Name: "beansprouts"}
+	testItem := Item{Id: id, Name: "beansprouts"}
 
 	actual := getXidName(testItem)
 	expected := "beansprouts"
@@ -63,7 +63,7 @@ func TestGetXidName(t *testing.T) {
 // Test getting timestamp from Item
 func TestGetXidTimestamp(t *testing.T) {
 	id := xid.ID{0x4d, 0x88, 0xe1, 0x5b, 0x60, 0xf4, 0x86, 0xe4, 0x28, 0x41, 0x2d, 0xc9}
-	testItem := neoItem{Id: id, Name: "beansprouts"}
+	testItem := Item{Id: id, Name: "beansprouts"}
 	currentTime := time.Now()
 
 	//expected := 30
@@ -79,7 +79,7 @@ func TestGetXidTimestamp(t *testing.T) {
 func TestGetXidCounter(t *testing.T) {
 	var expected int32
 	id := xid.ID{0x4d, 0x88, 0xe1, 0x5b, 0x60, 0xf4, 0x86, 0xe4, 0x28, 0x41, 0x2d, 0xc9}
-	testItem := neoItem{Id: id, Name: "beansprouts"}
+	testItem := Item{Id: id, Name: "beansprouts"}
 
 	expected = 4271561
 	actual := getXidCounter(testItem)

@@ -6,7 +6,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
-	
+
 	"github.com/gorilla/mux"
 )
 
@@ -31,14 +31,14 @@ func healthCheck(w http.ResponseWriter, r *http.Request) {
 func itemIndex(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
-	if err := json.NewEncoder(w).Encode(neoitems); err != nil {
+	if err := json.NewEncoder(w).Encode(items); err != nil {
 		panic(err)
 	}
 }
 
 // itemCreate: add a new item (via createItem) to the index
 func itemCreate(w http.ResponseWriter, res *http.Request) {
-	var neoItemName string
+	var ItemName string
 
 	body, err := ioutil.ReadAll(io.LimitReader(res.Body, 1048576))
 	if err != nil {
@@ -47,7 +47,7 @@ func itemCreate(w http.ResponseWriter, res *http.Request) {
 	if err := res.Body.Close(); err != nil {
 		panic(err)
 	}
-	if err := json.Unmarshal(body, &neoItemName); err != nil {
+	if err := json.Unmarshal(body, &ItemName); err != nil {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(422) // unprocessable entity
 		if err := json.NewEncoder(w).Encode(err); err != nil {
@@ -73,7 +73,7 @@ func itemShow(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	var itemXid string
 	var err bool
-	if itemXid, err = vars["NeoItemId"]; err != true {
+	if itemXid, err = vars["ItemId"]; err != true {
 		panic(err)
 	}
 
