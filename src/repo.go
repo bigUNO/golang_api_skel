@@ -1,12 +1,9 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 )
 
-var currentId int
-
-var items Items
 var neoitems neoItems
 
 func init() {
@@ -40,23 +37,7 @@ func findItem(id string) neoItem {
 	return neoItem{}
 }
 
-func RepoFindItem(id int) Item {
-	for _, I := range items {
-		if I.Id == id {
-			return I
-		}
-	}
-	// return empty item if not found
-	return Item{}
-}
-
-func RepoCreateItem(I Item) Item {
-	currentId += 1
-	I.Id = currentId
-	items = append(items, I)
-	return I
-}
-
+/*
 func RepoDestroyItem(id int) error {
 	for i, I := range items {
 		if I.Id == id {
@@ -65,4 +46,4 @@ func RepoDestroyItem(id int) error {
 		}
 	}
 	return fmt.Errorf("Could not find item with id of %d to delete", id)
-}
+}*/

@@ -6,17 +6,11 @@ import (
 	"github.com/rs/xid"
 )
 
-type Item struct {
-	Id   int    `json:"id"`
-	Name string `json:"name"`
-}
-
 type neoItem struct {
 	Id   xid.ID `json:"xid"`
 	Name string `json:"name"`
 }
 
-type Items []Item
 type neoItems []neoItem
 
 // SetDefaults: sets the UUID on creation
@@ -25,11 +19,6 @@ func (self *neoItem) SetDefaults() {
 }
 
 // METHODS
-
-// confirmItem:
-func confirmItem(s string) bool {
-	return true
-}
 
 // getXidString: return neoItems UUID string
 func getXidString(nI neoItem) string {
