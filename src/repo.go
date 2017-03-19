@@ -1,7 +1,7 @@
 package main
 
 import (
-//"fmt"
+"fmt"
 )
 
 var items Items
@@ -37,13 +37,15 @@ func findItem(id string) Item {
 	return Item{}
 }
 
-/*
-func RepoDestroyItem(id int) error {
-	for i, I := range items {
-		if I.Id == id {
+// deleteItem: mark item as deleted
+func deleteItem(id string) error {
+	deathrow := findItem(id)
+	for i, _ := range items {
+		found := getXidString(deathrow)
+		if id == found {
 			items = append(items[:i], items[i+1:]...)
 			return nil
 		}
 	}
 	return fmt.Errorf("Could not find item with id of %d to delete", id)
-}*/
+}

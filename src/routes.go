@@ -17,4 +17,5 @@ var routes = Routes{
 	Route{"ItemIndex", "GET", "/items", itemIndex},
 	Route{"ItemCreate", "POST", "/items", itemCreate},
 	Route{"ItemShow", "GET", "/items/{ItemId}", itemShow},
+	Route{"ItemDelete", "DELETE", "/items/{ItemId}", itemDelete},
 }

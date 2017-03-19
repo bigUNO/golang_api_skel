@@ -95,3 +95,31 @@ func itemShow(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 }
+
+// itemShow: Return all items in index
+func itemDelete(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	var itemXid string
+	var err bool
+	if itemXid, err = vars["ItemId"]; err != true {
+		panic(err)
+	}
+
+	item := findItem(itemXid)
+	c := item.Id
+	if c.Counter() > 0 {
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(http.StatusOK)
+		if err := json.NewEncoder(w).Encode(item); err != nil {
+			panic(err)
+		}
+		return
+	}
+
+	// If we didn't find it, 404
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.WriteHeader(http.StatusNotFound)
+	if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Not Found"}); err != nil {
+		panic(err)
+	}
+}
