@@ -1,8 +1,8 @@
 package main
 
 import (
-  "testing"
-  "fmt"
+	"fmt"
+	"testing"
 )
 
 // Test creating an Item
@@ -21,9 +21,9 @@ func TestCreateItem(t *testing.T) {
 // Test finding an Item
 func TestfindItem(t *testing.T) {
 	expected := "ghostfart"
-  sniff := findItem(expected)
+	sniff := findItem(expected)
 
-  actual := getXidName(sniff)
+	actual := getXidName(sniff)
 	if actual != expected {
 		t.Errorf("cannot find item: got %v wanted %v",
 			actual, expected)

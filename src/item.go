@@ -7,8 +7,9 @@ import (
 )
 
 type Item struct {
-	Id   xid.ID `json:"xid"`
-	Name string `json:"name"`
+	Id       xid.ID    `json:"xid"`
+	Name     string    `json:"name"`
+	Modified time.Time `json:"modified"`
 }
 
 type Items []Item
