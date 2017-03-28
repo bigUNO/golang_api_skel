@@ -39,7 +39,7 @@ docker stop test
 # Usage
 Return `{"alive": true`. Great for testing
 ```sh
-curl http://localhost:6060/healthcheck
+curl http://localhost:8080/healthcheck
 ```
 
 Return all items
