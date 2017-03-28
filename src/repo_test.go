@@ -39,7 +39,7 @@ func TestDeleteItem(t *testing.T) {
 	exampleTime := time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
 	testItem := Item{Id: id, Name: "beansprouts", Modified: exampleTime}
 	expected := true
-	
+
 	testItem.SetDeleted()
 	actual := getIsDeleted(testItem)
 	if actual != true {

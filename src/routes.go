@@ -14,8 +14,8 @@ type Routes []Route
 var routes = Routes{
 	Route{"Index", "GET", "/", index},
 	Route{"HealthCheck", "GET", "/healthcheck", healthCheck},
-	Route{"ItemIndex", "GET", "/items", itemIndex},
-	Route{"ItemCreate", "POST", "/items", itemCreate},
-	Route{"ItemShow", "GET", "/items/{ItemId}", itemShow},
-	Route{"ItemDelete", "DELETE", "/items/{ItemId}", itemDelete},
+	Route{"ItemIndex", "GET", "/v0/items", itemIndex},
+	Route{"ItemCreate", "POST", "/v0/items", itemCreate},
+	Route{"ItemShow", "GET", "/v0/items/{ItemId}", itemShow},
+	Route{"ItemDelete", "DELETE", "/v0/items/{ItemId}", itemDelete},
 }
