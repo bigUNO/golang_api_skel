@@ -59,3 +59,8 @@ Add item
 ```sh
 curl -H "Content-Type: application/json" -d '{"name":"soda"}' http://localhost:8080/items
 ```
+
+## Want to contribute?
+You can [create a GitHub issue](https://github.com/bigUNO/golang_api_skel/issues/new) for any feature requests, bugs, or documentation improvements.
+
+Where possible, please [submit a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) for the change.
