@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: src/
+    destination: /opt/app
+hooks:
+  BeforeInstall:
+    - location: codedeploy/BeforeInstall.sh
+  ApplicationStop:
+    - location: codedeploy/ApplicationStop.sh
+  ApplicationStart:
+    - location: codedeploy/ApplicationStart.sh
+  ValidateService:
+    - location: codedeploy/ValidateService.sh
