@@ -7,10 +7,10 @@ import (
 )
 
 type Item struct {
-	Id       xid.ID    `json:"xid"`
-	Name     string    `json:"name"`
-	Modified time.Time `json:"modified"`
-	IsDeleted bool		 `json:"isdeleted"`
+	Id        xid.ID    `json:"xid"`
+	Name      string    `json:"name"`
+	Modified  time.Time `json:"modified"`
+	IsDeleted bool      `json:"isdeleted"`
 }
 
 type Items []Item

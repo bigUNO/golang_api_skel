@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 	"time"
-	"fmt"
 
 	"github.com/rs/xid"
 )
@@ -44,6 +44,6 @@ func TestDeleteItem(t *testing.T) {
 	actual := getIsDeleted(testItem)
 	if actual != true {
 		t.Errorf("item has risen from the grave: got %v wanted %v",
-		  actual, expected)
+			actual, expected)
 	}
 }
