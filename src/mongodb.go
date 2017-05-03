@@ -5,9 +5,9 @@ import (
 	"time"
 
 	"gopkg.in/mgo.v2"
-	//"gopkg.in/mgo.v2/bson"
 )
 
+// Connection Info
 const (
 	MongoDBHosts = "ds159050.mlab.com:59050"
 	AuthDatabase = "golang_api"
@@ -16,7 +16,8 @@ const (
 	IsDrop       = false
 )
 
-func init() {
+// getSession: create a mongo session and pass the dutch
+func getSession() *mgo.Session {
 	// We need this object to establish a session to our MongoDB.
 	mongoDBDialInfo := &mgo.DialInfo{
 		Addrs:    []string{MongoDBHosts},
@@ -31,8 +32,6 @@ func init() {
 	if err != nil {
 		log.Fatalf("CreateSession: %s\n", err)
 	}
-	defer session.Close()
-
 	session.SetMode(mgo.Monotonic, true)
 
 	if IsDrop {
@@ -41,10 +40,10 @@ func init() {
 			panic(err)
 		}
 	}
-
-	ensureIndex(session)
+	return session
 }
 
+// ensureIndex: create index then starting up
 func ensureIndex(s *mgo.Session) {
 	session := s.Copy()
 	defer session.Close()
@@ -62,4 +61,9 @@ func ensureIndex(s *mgo.Session) {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func init() {
+ s := getSession()
+	ensureIndex(s)
 }
