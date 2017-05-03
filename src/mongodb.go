@@ -7,15 +7,6 @@ import (
 	"gopkg.in/mgo.v2"
 )
 
-// Connection Info
-const (
-	MongoDBHosts = "ds159050.mlab.com:59050"
-	AuthDatabase = "golang_api"
-	AuthUserName = "zA4gAR8ETb78"
-	AuthPassword = "sFZe4JphfWyhH5pASsrARjmcXV6H9ZYJ"
-	IsDrop       = false
-)
-
 // getSession: create a mongo session and pass the dutch
 func getSession() *mgo.Session {
 	// We need this object to establish a session to our MongoDB.
