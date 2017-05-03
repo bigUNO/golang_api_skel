@@ -3,6 +3,7 @@
 Basic framework for Go API
 
 * [Build](#build)
+* [Configuration](#configuration)
  * [Docker](##docker)
 * [Testing](#testing)
 * [Usage](#usage)
@@ -12,6 +13,20 @@ Creates an executable called api in the `build` directory.
 
 ```
 go build -o build/golang_api_skel src/*
+```
+
+# Config
+A config file is needed
+
+```sh
+title = "golang_api_skel"
+
+[datebase]
+mongodbhosts = "mongodb1.example.com:27017"
+authdatabase = "drbipolar"
+authusername = "koolkeith"
+authpassword = "oakridgecake"
+isdrop       = false
 ```
 
 ## Docker

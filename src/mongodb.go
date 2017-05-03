@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"fmt"
 	"time"
 
 	"gopkg.in/mgo.v2"
@@ -9,13 +10,17 @@ import (
 
 // getSession: create a mongo session and pass the dutch
 func getSession() *mgo.Session {
+  // read config in
+	var config = ReadConfig()
+	fmt.Println(config.MongoDBHosts)
+
 	// We need this object to establish a session to our MongoDB.
 	mongoDBDialInfo := &mgo.DialInfo{
-		Addrs:    []string{MongoDBHosts},
+		Addrs:    []string{config.MongoDBHosts},
 		Timeout:  60 * time.Second,
-		Database: AuthDatabase,
-		Username: AuthUserName,
-		Password: AuthPassword,
+		Database: config.AuthDatabase,
+		Username: config.AuthUserName,
+		Password: config.AuthPassword,
 	}
 
 	// create mongo session which manages pool of socket connections
@@ -25,7 +30,7 @@ func getSession() *mgo.Session {
 	}
 	session.SetMode(mgo.Monotonic, true)
 
-	if IsDrop {
+	if config.IsDrop {
 		err = session.DB("inventory").DropDatabase()
 		if err != nil {
 			panic(err)
@@ -55,6 +60,7 @@ func ensureIndex(s *mgo.Session) {
 }
 
 func init() {
- s := getSession()
+	// create index on start
+	s := getSession()
 	ensureIndex(s)
 }
