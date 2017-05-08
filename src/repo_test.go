@@ -22,7 +22,7 @@ func TestCreateItem(t *testing.T) {
 }
 
 // Test finding an Item
-func TestfindItem(t *testing.T) {
+func TestFindItem(t *testing.T) {
 	expected := "ghostfart"
 	sniff := findItem(expected)
 

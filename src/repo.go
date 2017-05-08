@@ -47,5 +47,5 @@ func deleteItem(id string) error {
 			return nil
 		}
 	}
-	return fmt.Errorf("Could not find item with id of %d to delete", id)
+	return fmt.Errorf("Could not find item with id of %v to delete", id)
 }
