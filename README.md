@@ -37,19 +37,20 @@ docker stop test
 ```
 
 # Usage
-Return `{"alive": true`. Great for testing
+Return `{"alive": true`. Great for testing. Note that the healthcheck is
+not versioned.
 ```sh
 curl http://localhost:8080/healthcheck
 ```
 
 Return all items
 ```sh
-curl http://localhost:8080/items
+curl http://localhost:8080/v0/items
 ```
 
 Return single item
 ```sh
-curl http://localhost:8080/items/b379fdbaqj868olu1gi0
+curl http://localhost:8080/v0/items/b379fdbaqj868olu1gi0
 ```
 
 Note the example above will not work, you need to grab the UUID of one of the
@@ -57,7 +58,7 @@ test items.
 
 Add item
 ```sh
-curl -H "Content-Type: application/json" -d '{"name":"soda"}' http://localhost:8080/items
+curl -H "Content-Type: application/json" -d '{"name":"soda"}' http://localhost:8080/v0/items
 ```
 
 ## Want to contribute?
