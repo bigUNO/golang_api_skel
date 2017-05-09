@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - Before script run `go vet`
-
+- Versioning the URL. `v0`
 ### Changed
 -
 
