@@ -7,6 +7,8 @@ import (
 
 	"github.com/rs/xid"
 )
+// create test inventory
+var testItems Items
 
 // Test creating an Item
 func TestCreateItem(t *testing.T) {
@@ -23,6 +25,12 @@ func TestCreateItem(t *testing.T) {
 
 // Test finding an Item
 func TestFindItem(t *testing.T) {
+	id := xid.ID{0x4d, 0x88, 0xe1, 0x5b, 0x60, 0xf4, 0x86, 0xe4, 0x28, 0x41, 0x2d, 0xc9}
+	exampleTime := time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
+	waldo := Item{Id: id, Name: "ghostfart", Modified: exampleTime}
+
+	testItems = append(testItems, waldo)
+
 	expected := "ghostfart"
 	sniff := findItem(expected)
 
