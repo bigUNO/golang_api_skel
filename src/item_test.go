@@ -26,7 +26,7 @@ func TestSetModified(t *testing.T) {
 	exampleTime := time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
 	testItem := Item{Id: id, Name: "beansprouts", Modified: exampleTime}
 
-  testItem.SetModified()
+	testItem.SetModified()
 	actual := getItemModified(testItem)
 	expected := "placeholder"
 	if actual == exampleTime {
@@ -109,7 +109,7 @@ func TestGetModified(t *testing.T) {
 	exampleTime := time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
 	testItem := Item{Id: id, Name: "beansprouts", Modified: exampleTime}
 
-  testItem.SetModified()
+	testItem.SetModified()
 	actual := getItemModified(testItem)
 	expected := actual.Sub(time.Now())
 	if expected > 1 {
