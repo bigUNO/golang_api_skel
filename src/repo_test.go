@@ -29,7 +29,7 @@ func TestFindItem(t *testing.T) {
 	exampleTime := time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
 	waldo := Item{Id: id, Name: "ghostfart", Modified: exampleTime}
 
-	testItems = append(testItems, waldo)
+	fmt.Printf("%+v", waldo)
 
 	expected := "ghostfart"
 	sniff := findItem(expected)
